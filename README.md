@@ -1,5 +1,3 @@
-# manage-with-cronjob
-
 # Chisel
 # Scheduler and job clicking tool
 ## A basic web application to manage scheduled and interactive jobs easier
