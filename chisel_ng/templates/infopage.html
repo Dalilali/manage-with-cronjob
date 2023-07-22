@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h1>Welcome to Webtool CHISEL</h1><br>
+<p>This webtool provides a convenient platform for managing and automating tasks on your server. 
+    With its user-friendly interface, you can easily create, manage, delete, update, activate, 
+    and deactivate cron jobs to ensure that your important tasks are executed on time.</p>
+<p>Principally it use only Cron to setup the jobs <br>
+    To define the time you can provide concrete values for <br>
+    minute, hour, day of month (day), month, <br>
+    and day of week (dow) or use '*' in these fields (for 'any') <br>
+</p>
+<p>
+ ┌───────────── minute (0 - 59) <br>
+ │ ┌───────────── hour (0 - 23) <br>
+ │ │ ┌───────────── (day) day of the month (1 - 31) <br>
+ │ │ │ ┌───────────── month (1 - 12) <br>
+ │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday) <br>
+ │ │ │ │ │               <br>
+ │ │ │ │ │               <br>
+ │ │ │ │ │               <br>
+ * * * * *   command     <br>
+</p>
+<h6>hier more infos:  <a href="https://crontab.guru/">https://crontab.guru/</a></h6>
+
+<p>In addition to cron jobs, you can also create non-scheduled jobs that can be executed manually at any time.</p>
+
+<p>With our webtool, you can streamline your workflow and free up valuable time for other important tasks. 
+    Start using it today and experience the benefits of a more efficient and automated workflow!</p>
+
+    <a class="btn btn-warning btn-sm m-1" href="/joblist">show all Jobs</a>
+    <br><br>
+{% endblock %}

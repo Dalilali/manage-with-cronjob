@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Git Reposotories Pull </h1>
+    <a class="btn btn-success" href="{{ url_for('pull_repos')}}">Pull All</a>
+
+    <main class="bd-main order-1">
+        <div class="bd-content ps-lg-2 table-responsive">
+        <table class="table table-striped w-auto">
+            <thead>
+            <tr>
+                <th>Repo Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for repo in repos %}
+                    <tr>
+                        <th>{{repo}}</th>
+
+                        <th><a class="btn btn-outline-warning btn-sm m-1" href="{{ url_for('pull_repo' , repo_name= repo) }}">Pull</a></th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </main>
+{% endblock %}

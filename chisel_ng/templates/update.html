@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" , action="">
+            <label for="desc">Description:</label><br>
+            <input class="col-sm-10" type="text" id="desc" name="desc" value="{{ cronjob.desc }}"><br><br>
+
+            <label for="minute">Minute (0 - 59)</label><br>
+            <input type="text" id="minute" name="minute" value="{{ cronjob.minute }}"><br>
+
+            <label for="hour">Hour (0 - 23)</label><br>
+            <input type="text" id="hour" name="hour" value="{{ cronjob.hour }}"><br>
+
+            <label for="day">Day of the month (1 - 31)</label><br>
+            <input type="text" id="day" name="day" value="{{ cronjob.day }}"><br>
+
+            <label for="month">Month (1 - 12)</label><br>
+            <input type="text" id="month" name="month" value="{{ cronjob.month }}"><br>
+
+            <label for="dow">Day of the week (0 - 6)</label><br>
+            <input type="text" id="dow" name="dow" value="{{ cronjob.dow }}"><br><br><br>
+
+            <h6>*click <a href="https://crontab.guru/">here</a> to get more information about time setup </h6>
+
+            <label for="command" class="form-label">Command</label><br>
+            <input class="col-sm-10" type="text" id="command" name="command" value="{{ cronjob.command }}"><br><br>
+            {% if cronjob.minute == ' ' %}
+                <input type="submit" value="Update" disabled>
+            {% else %}
+                <input type="submit" value="Update">
+                {% if cronjob.status == false %}
+                    <a class="btn btn-warning btn-sm m-1" href="{{ url_for('enable_job' , id = cronjob.id) }}">Enable</a>
+                {% endif %}
+                {% if cronjob.status == True %}
+                    <a class="btn btn-warning btn-sm m-1" href="{{ url_for('disable_job' , id = cronjob.id) }}">Disable</a>
+                {% endif %}
+            {% endif %}
+            
+            
+            
+            <br><br>
+        </form>
+    </div>
+{% endblock %}

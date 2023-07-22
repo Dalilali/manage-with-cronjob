@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+    {% block content %}
+        <h1>Welcome to CHISEL!</h1>
+        <a class="btn btn-success" href="{{ url_for('create_job') }}">Create new Job</a>
+    
+        <main class="bd-main order-1">
+            <div class="bd-content ps-lg-2 table-responsive">
+            <table class="table table-striped w-auto">
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Time</th>
+                    <th>Command</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for job in cronjobs %}
+                        <tr>
+                            {% if job.status %}
+                                <th class="text-success">✅</th>
+                            {% else %}
+                                <th class="text-danger">❌</th>
+                            {% endif %}
+
+                            <th>{{job.desc }}</th>
+
+                            {% if job.minute != None %}
+                                <th>{{ job.minute + "  " + job.hour + " " + job.day + " " + job.month + " " + job.dow }}</th>
+                            {% else %}
+                                <th>Non-Schedule</th>
+                            {% endif %}
+                            
+                            <th>{{job.command}}</th>
+                            <th><a class="btn btn-secondary btn-sm m-1" href="{{ url_for('update_job' , id = job.id) }}">Update</a></th>
+                            <th><a class="btn btn-danger btn-sm m-1" href="{{ url_for('delete_job' , id = job.id) }}">Delete</a></th>
+                            <th><a class="btn btn-outline-warning btn-sm m-1" href="{{ url_for('excute_job' , id = job.id) }}">Execute now</a></th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </main>
+    {% endblock %}

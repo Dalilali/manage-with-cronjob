@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" , action="">
+            <label for="desc">Description:</label><br>
+            <input class="col-sm-10" type="text" id="desc" name="desc"><br><br>
+
+            <a class="btn btn-warning btn-sm m-1" href="{{ url_for('create_job')}}">Schedule Job</a><br>
+
+            <label for="command">Command</label><br>
+            <input class="col-sm-10" type="text" id="command" name="command"><br><br>
+
+            <input type="submit" value="Create"><br><br>
+        </form>
+    </div>
+
+{% endblock %}
